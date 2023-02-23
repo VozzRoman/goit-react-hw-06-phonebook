@@ -1,8 +1,8 @@
 import { FildName, EnterName } from 'components/ContactForm/ContactFormStyle';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { filteredContacts } from 'redux/store';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 
 export const Filter = () => {

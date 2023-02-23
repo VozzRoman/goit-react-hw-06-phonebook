@@ -1,5 +1,5 @@
 import { ItemList, ListContacts } from './ContactListStyle';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { ContactItem } from 'components/ContactItem/ContactItem';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
@@ -16,7 +16,7 @@ export const ContactList = () => {
 	console.log(listContacts);
 
 
-	
+
 return (
   <ListContacts>
     {listContacts.map(({ id, name, number }) => (
