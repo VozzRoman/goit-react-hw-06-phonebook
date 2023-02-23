@@ -1,59 +1,41 @@
-// import PropTypes from 'prop-types';
-import { useState } from 'react';
+
 import { Button, EnterName, FildName, Forms } from './ContactFormStyle';
-import shortid from 'shortid';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-export const ContactForm = ({ contacts, onSubmit }) => {
-  console.log(contacts);
-  const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
+import { addContact } from 'redux/store';
 
-  const handleChange = e => {
-    console.log(e.currentTarget);
-    console.log(e.currentTarget.name);
-    console.log(e.currentTarget.value);
-    switch (e.currentTarget.name) {
-      case 'name':
-        setName(e.currentTarget.value);
-        break;
-      case 'number':
-        setNumber(e.currentTarget.value);
-        break;
-      default:
-        return;
-    }
-  };
+export const ContactForm = () => {
+const dispatch = useDispatch();
+console.log(addContact());
+
+
+
+
 
   const hendleSubmit = e => {
     e.preventDefault();
-    console.log(name, number);
-    if (contacts.find(item => item.name === name)) {
-      alert(`${name} is already in contacts.`);
-      return;
-    } else if (contacts.find(item => item.number === number)) {
-      alert(`${number} is already in contacts.`);
-      return;
-    } else if (!/\d{3}[-]\d{2}[-]\d{2}/g.test(number)) {
-      alert('Enter the correct number phone!');
-      return;
-    }
 
-    onSubmit(name, number, shortid.generate());
-    resetForm();
+	 const form = e.currentTarget;
+	
+	 const data = {
+		name: form.elements.name.value,
+		number:form.elements.number.value,
+	 }
+	 dispatch(addContact({data}))
+
+	form.reset();
+
   };
 
-  const resetForm = () => {
-    setName('');
-    setNumber('');
-  };
+
+
 
   return (
     <Forms onSubmit={hendleSubmit}>
       <FildName htmlFor="name">
         Name
         <EnterName
-          value={name}
-          onChange={handleChange}
           id="name"
           type="text"
           name="name"
@@ -65,9 +47,7 @@ export const ContactForm = ({ contacts, onSubmit }) => {
       </FildName>
       <FildName htmlFor="number">
         Number
-        <EnterName
-          value={number}
-          onChange={handleChange}
+        <EnterName 
           id="number"
           type="tel"
           name="number"
