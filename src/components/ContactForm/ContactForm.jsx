@@ -1,35 +1,24 @@
-
 import { Button, EnterName, FildName, Forms } from './ContactFormStyle';
 import { useDispatch } from 'react-redux';
-// import { useSelector } from 'react-redux';
-
-import { addContact } from 'redux/store';
+import { addContact } from 'redux/cotactsSlice/slice';
 
 export const ContactForm = () => {
-const dispatch = useDispatch();
-console.log(addContact());
-
-
-
-
+  const dispatch = useDispatch();
+  console.log(addContact());
 
   const hendleSubmit = e => {
     e.preventDefault();
 
-	 const form = e.currentTarget;
-	
-	 const data = {
-		name: form.elements.name.value,
-		number:form.elements.number.value,
-	 }
-	 dispatch(addContact({data}))
+    const form = e.currentTarget;
 
-	form.reset();
+    const data = {
+      name: form.elements.name.value,
+      number: form.elements.number.value,
+    };
+    dispatch(addContact({ data }));
 
+    form.reset();
   };
-
-
-
 
   return (
     <Forms onSubmit={hendleSubmit}>
@@ -47,7 +36,7 @@ console.log(addContact());
       </FildName>
       <FildName htmlFor="number">
         Number
-        <EnterName 
+        <EnterName
           id="number"
           type="tel"
           name="number"
