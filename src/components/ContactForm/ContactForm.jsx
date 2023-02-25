@@ -26,6 +26,9 @@ export const ContactForm = () => {
 	if(contacts.find(item => item.number === data.number)){
 		return alert('this number alredy exist')
 	}
+	if (!/\d{3}[-]\d{2}[-]\d{2}/g.test(data.number)) {
+		return alert('Enter the correct number phone!');
+	} 
     dispatch(addContact({ data }));
 
     form.reset();
