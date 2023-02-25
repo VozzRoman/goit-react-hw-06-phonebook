@@ -1,5 +1,5 @@
 
-// значение берем через стор через стор
+// значение берем через стор
 
 export const getContactsList = state => {
 	console.log(state.contacts.contacts);

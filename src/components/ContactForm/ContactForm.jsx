@@ -6,7 +6,6 @@ import { getContactsList } from 'redux/selectors/selectors';
 
 
 export const ContactForm = () => {
-
   const dispatch = useDispatch();
   const contacts = useSelector(getContactsList);
   console.log(contacts);
