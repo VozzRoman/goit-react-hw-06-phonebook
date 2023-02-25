@@ -1,54 +1,33 @@
 import { ItemList, ListContacts } from './ContactListStyle';
-// import PropTypes from 'prop-types';
 import { ContactItem } from 'components/ContactItem/ContactItem';
-import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { addContact } from 'redux/cotactsSlice/slice';
-// import { getContactsList } from 'redux/cotactsSlice/slice';
+import { getContactsList } from 'redux/selectors/selectors';
+import { getFilterValue } from 'redux/selectors/selectors';
+
+const getFilteredCOntacts = (inputData, listContact) => {
+  return listContact.filter(item => item.name.includes(inputData));
+};
 
 export const ContactList = () => {
-	const dispatch = useDispatch();
+  // const inputData = useSelector(state => state.filter);
+  // console.log(inputData);
+  const inputData = useSelector(getFilterValue); //Selectors
 
-	console.log(dispatch(addContact));
-	// const inputData = useSelector(state => {
-	// 	console.log(state);
-	// })
-	// console.log(inputData);
+  // const listContacts = useSelector(state => state.contacts);
+  // console.log(listContacts);
+  const listContacts = useSelector(getContactsList); //Selectors
 
-	const listContacts = useSelector(state => {
-		console.log(state.contacts);
-	return state.contacts;
-	})
+  const filteredContacts = getFilteredCOntacts(inputData, listContacts);
 
-	
-
-	// const filteredList = listContacts.filter(item => item.name.includes(inputData));
-	// console.log(filteredList);
-	
-	// const listContacts = useSelector(getContactsList); //Selectors
-	
-
-
-
-return (
-	<>
-<ListContacts>
-    {listContacts.map(({ id, name, number }) => (
-      <ItemList key={id}>
-        <ContactItem
-          name={name}
-          number={number}
-          id={id}
-        />
-      </ItemList>
-    ))}
-  </ListContacts>
-	
-	
-	</>
-
-);
-
-}
-
-
+  return (
+    <>
+      <ListContacts>
+        {filteredContacts.map(({ id, name, number }) => (
+          <ItemList key={id}>
+            <ContactItem name={name} number={number} id={id} />
+          </ItemList>
+        ))}
+      </ListContacts>
+    </>
+  );
+};

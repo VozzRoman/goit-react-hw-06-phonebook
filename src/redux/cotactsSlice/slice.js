@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 // import { persistReducer } from 'redux-persist'
 
 
+
 export const contactsSlice = createSlice({
 	name: 'contacts',
 	initialState: [
@@ -13,24 +14,22 @@ export const contactsSlice = createSlice({
 	],
 	reducers: {
 	  addContact(state, action) {
-		 const newContact = {
-			id: shortid(),
-			name: action.payload.data.name,
-			number: action.payload.data.number,
-		 };
-		 return [...state, newContact];
-		 // state.push({
-		 // 	id: shortid(),
-		 // 	name: action.payload.data.name,
-		 // 	number: action.payload.data.number,
-		 // })
+		//  const newContact = {
+		// 	id: shortid(),
+		// 	name: action.payload.data.name,
+		// 	number: action.payload.data.number,
+		//  };
+		//  return [...state, newContact];
+		 state.push({
+		 	id: shortid(),
+		 	name: action.payload.data.name,
+		 	number: action.payload.data.number,
+		 })
 	  },
 	  removeContact(state, action) {
 		 return state.filter(item => item.id !== action.payload);
 	  },
-	  filteredContacts(state, action) {
-		 return state.filter(item => item.name.includes(action.payload));
-	  },
+	
 	},
  });
 
@@ -38,9 +37,8 @@ export const contactsSlice = createSlice({
 
 
  
- export const { addContact, removeContact, filteredContacts } =
+ export const { addContact, removeContact } =
 	contactsSlice.actions;
 
-//Selecors
 
-export const getContactsList = state => state.contactscon
+
