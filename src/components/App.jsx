@@ -1,5 +1,4 @@
 import { ContactList } from './ContcatList/ContactList';
-// import { useState, useEffect } from 'react';
 import { Filter } from './Filter/Filter';
 import { ContactForm } from './ContactForm/ContactForm';
 import { Background } from './Container/Background';
