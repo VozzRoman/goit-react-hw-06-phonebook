@@ -7,7 +7,8 @@ export const Filter = () => {
 
   const onChangeHandle = e => {
     console.log(e.currentTarget.value);
-    dispatch(filteredValue(e.currentTarget.value));
+	 const inputValue = e.currentTarget.value.toLocaleLowerCase();
+    dispatch(filteredValue(inputValue));
   };
 
   return (

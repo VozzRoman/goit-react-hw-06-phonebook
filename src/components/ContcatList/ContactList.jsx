@@ -6,7 +6,7 @@ import { getFilterValue } from 'redux/selectors/selectors';
 
 const getFilteredCOntacts = (inputData, listContact) => {
 	console.log(listContact);
-  return listContact.filter(item => item.name.includes(inputData));
+  return listContact.filter(item => item.name.toLocaleLowerCase().includes(inputData));
 };
 
 export const ContactList = () => {
