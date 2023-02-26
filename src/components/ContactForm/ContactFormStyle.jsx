@@ -44,5 +44,8 @@ export const Button = styled.button`
 	&:hover, :focus{
 		background-color: gray;
 	}
+	&:disabled{
+		background-color: #9393ff;
+	}
 	
 `

@@ -11,7 +11,9 @@ export const ContactForm = () => {
   const contacts = useSelector(getContactsList);
   console.log(contacts);
   console.log(addContact());
-  const { register, handleSubmit, reset, formState: { errors } } = useForm();
+  const { register, handleSubmit, reset, formState: { errors, isValid } } = useForm({
+	mode: 'onBlur',
+  });
   const onFormSubmit = data => {
 	console.log(data.name);
 	console.log(data.number);
@@ -86,7 +88,7 @@ export const ContactForm = () => {
 		  
       </FildName>
 		{errors?.number && <span style={{display: "block", marginBottom: 5, color: 'red'}}>{errors?.number?.message || "Error"}</span>}
-      <Button type="submit">Add contact</Button>
+      <Button type="submit" disabled={!isValid}>Add contact</Button>
     </Forms>
 	{!contacts.length ? (<h2>The phonebook is empty</h2>) : (<h2>Contacts</h2>)}
 	 </>
