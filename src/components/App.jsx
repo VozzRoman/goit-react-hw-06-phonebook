@@ -18,10 +18,10 @@ export const App = () => {
         <h1>Phonebook</h1>
         <ContactForm />
 
-        <h2>The phonebook is empty</h2>
+        
 
         <>
-          <h2>Contacts</h2>
+          
           <Filter />
           <ContactList />
         </>
